@@ -1,5 +1,7 @@
 import random
 
+#PAST CODE FOR REFERENCE
+
 
 characters = {
    "onBanner5" : {"Xiao" : 0.0025},
@@ -22,3 +24,4 @@ for i in range(pull, 0, -1):
        guaranteed = list(characters["onBanner4"].keys()) + list(characters["offBanner4"].keys()) + list(weapons["4*"].keys()) # equal chances
        choice = random.choice(guaranteed)
        print(f"You got {choice}")
+
