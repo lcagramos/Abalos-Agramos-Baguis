@@ -7,6 +7,7 @@ with open("items.json", "r") as f:
 with open("inventory.json", "r") as f:
     data = json.load(f)
 
+
 name = input("Welcome to Paithon's Gacha! What is your name, traveler? ")
 
 print("\n\n")
@@ -50,16 +51,44 @@ if menuChoice == 1:
     categoryChoice = ""
     while True:
         try:
-            categoryChoice = int(input("\nChoose a category (1-3)"))
-            if 1 <= menuChoice <= 3:
+            categoryChoice = int(input("Choose a category (1-3): "))
+            if 1 <= categoryChoice <= 3:
                 break
             else:
                 print("Enter a number between 1 to 3.")
         except ValueError:
             print("Invalid input! Try again.")
+
+    matchingQuestion = []
+    for i in questions:
+        if i["category"] == "easy":
+            category = 1
+            i["primogems"] == 60
+        elif i["category"] == "medium":
+            category = 2
+            i["primogems"] == 110
+        else:
+            category = 3
+            i["primogems"] == 150
+
+        if not i["answered"] and i["category"] == category:
+            matchingQuestion.append(i)
+
+        if matchingQuestion:
+            i["question_num"] = matchingQuestion[0]
+
+        else:
+            print("\nThat question was already answered, try again.")
+            continue
+
+    print("\n\n")
+    print(matchingQuestion[0]["question"])
+    print("\nChoices: ")
+    print(matchingQuestion[0]["choices"])
+    answer = input("\nEnter your answer: ")
+
 elif menuChoice == 2:
     print("")
-
 elif menuChoice == 3:
     print("╔╦╗╔═╗╦╔╗╔  ╔═╗╦═╗╔═╗╔═╗╦═╗╔═╗╔╦╗╔╦╗╔═╗╦═╗╔═╗ O")
     time.sleep(1)
@@ -87,3 +116,7 @@ elif menuChoice == 3:
     print(" ║╠═╣║  ╚╦╝  ╠╩╗╠═╣║ ╦║ ║║╚═╗    ")
     time.sleep(1)
     print("╚╝╩ ╩╚═╝ ╩   ╚═╝╩ ╩╚═╝╚═╝╩╚═╝    ")
+
+else:
+    print("Leaving already?")
+    print("Alright, byebye !!")
