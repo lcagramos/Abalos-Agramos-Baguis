@@ -87,6 +87,10 @@ if menuChoice == 1:
     print(matchingQuestion[0]["choices"])
     answer = input("\nEnter your answer: ")
 
+    for i in questions:
+        if i["category"] == category:
+            i["answered"] = True
+
 elif menuChoice == 2:
     print("")
 elif menuChoice == 3:
