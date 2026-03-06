@@ -88,7 +88,35 @@ if menuChoice == 1:
     answer = input("\nEnter your answer: ")
 
 elif menuChoice == 2:
-    print("")
+    print("Instructions (enter to continue):\n"
+          "")
+
+    input("Paithon: Welcome player! In this game, you can obtain many \n"
+          "characters and weapons, however, you must first earn a currency called \"Primogems\".\n")
+
+    input("Paithon: To earn Primogems, you have to answer quiz bee questions\n"
+          "related to Python coding concepts. There’s 3 difficulties: \n"
+          "Easy (Formative Assessment), Medium (Alternative Assessment), \n"
+          "and lastly, Hard (Summative Assessment).\n\n")
+
+    print("Paithon:")
+    print(" o Easy gives 60 Primogems per question")
+    print(" o Medium gives 110 Primogems per question")
+    print(" o Hard gives 150 Primogems per question")
+    input(" o Each level contains five items!\n\n")
+
+    print("Paithon: So, you might be asking, \"What do I do with all these primogems..?\" \n"
+          "Well, first..!")
+    print(" o You can convert them into wishes when pulling on the current event wish banner.")
+    print(" o Doing a pull gives you one guaranteed 4-star, that of either a weapon or character.")
+    input(" o The 9 other wishes from one pull are random; usually a 3-star when you’re at low pity.\n\n")
+
+    input("Paithon: The pity system is a system in which after doing over 7 pulls \n"
+          "(70 wishes) your chances of obtaining a 5-star are increased!")
+    print("This only heightens the 5-star character drop rate.\n")
+    print("When a 5-star is available and a golden star is visible when wishing, \n"
+          "you have a 50/50 chance of obtaining either Xiao (limited character) \n"
+          "or a character from the permanent wish (standard 5-star characters).")
 elif menuChoice == 3:
     print("╔╦╗╔═╗╦╔╗╔  ╔═╗╦═╗╔═╗╔═╗╦═╗╔═╗╔╦╗╔╦╗╔═╗╦═╗╔═╗ O")
     time.sleep(1)
