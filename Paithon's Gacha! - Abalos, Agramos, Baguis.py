@@ -31,7 +31,7 @@ def get_menu_choice():
 def get_category_choice():
     while True:
         try:
-            category_choice = int(input("Choose a category (1-3): "))
+            category_choice = int(input("\nChoose a category (1-3): "))
             if 1 <= category_choice <= 3:
                 return category_choice
             else:
@@ -91,21 +91,20 @@ if menuChoice == 1:
         if not matchingQuestions:
             print("\nYou've answered everything in this category! Choose another category.")
             continue
-        else:
-            random.shuffle(matchingQuestions)
 
+        random.shuffle(matchingQuestions)
         for question in matchingQuestions:
-            if not question["answered"]:
-                print()
-                print(question["text"])
-                for i in (question["choices"]):
-                    print(i)
-                answer = input("\nEnter your answer: ")
-                input(f"The correct answer is {question['answer']} (Press Enter to continue) ")
+            print()
+            for i in (question["text"]):
+                print(i)
+            for i in (question["choices"]):
+                print(i)
+            answer = input("\nEnter your answer: ")
+            input(f"The correct answer is {question['answer']} (Press Enter to continue) ")
 
-                question["answered"] = True
-                with open("quizbee.json", "w", encoding="utf-8") as f:
-                    json.dump(questions, f, indent=4)
+            question["answered"] = True
+            with open("quizbee.json", "w", encoding="utf-8") as f:
+                json.dump(questions, f, indent=4)
 
 elif menuChoice == 2:
     print("Instructions (enter to continue):\n"
