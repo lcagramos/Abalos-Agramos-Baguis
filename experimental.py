@@ -25,3 +25,4 @@ for i in range(pull, 0, -1):
        choice = random.choice(guaranteed)
        print(f"You got {choice}")
 
+
