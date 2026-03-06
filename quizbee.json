@@ -1,122 +1,152 @@
 [
-  {
-    "question_num" : 1,
-    "text": "What will be printed by the following code?\nnumbers = [5, 10, 15]\nprint(numbers[0])\n",
-    "choices" : ["A. 5\nB. 10\nC. 15\nD. Error"],
-    "category" : "Easy",
-    "answer" : "A",
-    "answered" : false
-  },
-  {
-    "question_num" : 2,
-    "text": "Which of the following is a list in Python",
-    "choices" : ["A. {1,2,3}\nB. [1,2,3],C. (1,2,3),D. \"1,2,3\""],
-    "category" : "Easy",
-    "answer" : "B",
-    "answered" : false
-  },
-  {
-    "question_num" : 3,
-    "text": "What is the output of the following code?\na = 8\nb = 3\nc = 2\nresult = a + b * c - a // b\nprint(result)",
-    "choices" : ["A. 12\nB. 11\nC. 13\nD. 10"],
-    "category" : "Easy",
-    "answer" : "A",
-    "answered" : false
-  },
-  {
-    "question_num" : 4,
-    "text": "What will make this code print?\nx = 5\nif x > 3\n       print(\"Yes\")\nelse:\n       print(\"No\")",
-    "choices" : ["A. Yes\nB. No\nC. Error\nD. Nothing"],
-    "category" : "Easy",
-    "answer" : "A",
-    "answered" : false
-  },
-  {
-    "question_num" : 5,
-    "text": "What will be printed?\nfor i in range(1,6):\n       if i % 2 == 0:\n       print(i)",
-    "choices" : ["A. 1 2 3 4 5\nB. 2 4\nC. 1 3 5\nD. 6"],
-    "category" : "Easy",
-    "answer" : "B",
-    "answered" : false
-  },
-  {
-    "question_num" : 1,
-    "text": "Which keyword is used to create a function in Python?",
-    "choices" : ["A. function\nB. define\nC. def\nD. func"],
-    "category" : "Medium",
-    "answer" : "C",
-    "answered" : false
-  },
-  {
-    "question_num" : 2,
-    "text": "What will this code return?\ndef add(a,b):\n       return(a+b)\nprint(add(3,4))",
-    "choices" : ["A. 34\nB. 7\nC. 12\nD. Error"],
-    "category" : "Medium",
-    "answer" : "B",
-    "answered" : false
-  },
-  {
-    "question_num" : 3,
-    "text": "In the function below, what is “name”?\ndef greet(name):",
-    "choices" : ["A. Argument\nB. Parameter\nC. Variable\nD. Loop"],
-    "category" : "Medium",
-    "answer" : "B",
-    "answered" : false
-  },
-  {
-    "question_num" : 4,
-    "text": "What will this print?\ndef square(x):\n       return x*x\nprint(square(5))",
-    "choices" : ["A. 10\nB. 25\nC. 5\nD. Error"],
-    "category" : "Medium",
-    "answer" : "B",
-    "answered" : false
-  },
-  {
-    "question_num" : 5,
-    "text": "What will be the output of the following code?\ndef add_five(num):\n       return num + 5\nx = add_five(3)\nx = add_five(x)\nprint(y)",
-    "choices" : ["A. 8\nB. 10\nC. 13\nD. 15"],
-    "category" : "Medium",
-    "answer" : "C",
-    "answered" : false
-  },
-  {
-    "question_num" : 1,
-    "text": "What does JSON stand for?",
-    "choices" : ["A. Java Standard Object Notation\nB. JavaScript Object Notation\nC. Java Structured Output Network\nD. JavaScript Organized Nodes"],
-    "category" : "Hard",
-    "answer" : "B",
-    "answered" : false
-  },
-  {
-    "question_num" : 2,
-    "text": "Which is a valid JSON format?",
-    "choices" : ["A. {name:\"John\", age:20}\nB. {\"name\":\"John\",\"age\":20}\nC. [name:John]\nD. <name=John>"],
-    "category" : "Hard",
-    "answer" : "B",
-    "answered" : false
-  },
-  {
-    "question_num" : 3,
-    "text": "Which command is commonly used to download a repository from GitHub to your computer?",
-    "choices" : ["A. push\nB. clone\nC. commit\nD. merge\nAnswer: B"],
-    "category" : "Hard",
-    "answer" : "B",
-    "answered" : false
-  },
-  {
-    "question_num" : 4,
-    "text": "What will be the output of the following code?\narr = [10, 20, 30, 40]\nprint(arr[1] + arr[3])",
-    "choices" : ["A. 30\nB. 40\nC. 50\nD. 60"],
-    "category" : "Hard",
-    "answer" : "D",
-    "answered" : false
-  },
-  {
-    "question_num": 5,
-    "text": "What will this output?\nprint(arr[1])  # from previous list\n",
-    "choices": ["A. 2\nB. 4\nC. 6\nD. Error"],
-    "category": "Hard",
-    "answer": "B",
-    "answered": false
-  }
+    {
+        "question_num": 1,
+        "text": "What will be printed by the following code?\nnumbers = [5, 10, 15]\nprint(numbers[0])\n",
+        "choices": [
+            "A. 5\nB. 10\nC. 15\nD. Error"
+        ],
+        "category": "Easy",
+        "answer": "A",
+        "answered": false
+    },
+    {
+        "question_num": 2,
+        "text": "Which of the following is a list in Python",
+        "choices": [
+            "A. {1,2,3}\nB. [1,2,3],C. (1,2,3),D. \"1,2,3\""
+        ],
+        "category": "Easy",
+        "answer": "B",
+        "answered": false
+    },
+    {
+        "question_num": 3,
+        "text": "What is the output of the following code?\na = 8\nb = 3\nc = 2\nresult = a + b * c - a // b\nprint(result)",
+        "choices": [
+            "A. 12\nB. 11\nC. 13\nD. 10"
+        ],
+        "category": "Easy",
+        "answer": "A",
+        "answered": false
+    },
+    {
+        "question_num": 4,
+        "text": "What will make this code print?\nx = 5\nif x > 3\n       print(\"Yes\")\nelse:\n       print(\"No\")",
+        "choices": [
+            "A. Yes\nB. No\nC. Error\nD. Nothing"
+        ],
+        "category": "Easy",
+        "answer": "A",
+        "answered": false
+    },
+    {
+        "question_num": 5,
+        "text": "What will be printed?\nfor i in range(1,6):\n       if i % 2 == 0:\n       print(i)",
+        "choices": [
+            "A. 1 2 3 4 5\nB. 2 4\nC. 1 3 5\nD. 6"
+        ],
+        "category": "Easy",
+        "answer": "B",
+        "answered": false
+    },
+    {
+        "question_num": 1,
+        "text": "Which keyword is used to create a function in Python?",
+        "choices": [
+            "A. function\nB. define\nC. def\nD. func"
+        ],
+        "category": "Medium",
+        "answer": "C",
+        "answered": false
+    },
+    {
+        "question_num": 2,
+        "text": "What will this code return?\ndef add(a,b):\n       return(a+b)\nprint(add(3,4))",
+        "choices": [
+            "A. 34\nB. 7\nC. 12\nD. Error"
+        ],
+        "category": "Medium",
+        "answer": "B",
+        "answered": false
+    },
+    {
+        "question_num": 3,
+        "text": "In the function below, what is \u201cname\u201d?\ndef greet(name):",
+        "choices": [
+            "A. Argument\nB. Parameter\nC. Variable\nD. Loop"
+        ],
+        "category": "Medium",
+        "answer": "B",
+        "answered": false
+    },
+    {
+        "question_num": 4,
+        "text": "What will this print?\ndef square(x):\n       return x*x\nprint(square(5))",
+        "choices": [
+            "A. 10\nB. 25\nC. 5\nD. Error"
+        ],
+        "category": "Medium",
+        "answer": "B",
+        "answered": false
+    },
+    {
+        "question_num": 5,
+        "text": "What will be the output of the following code?\ndef add_five(num):\n       return num + 5\nx = add_five(3)\nx = add_five(x)\nprint(y)",
+        "choices": [
+            "A. 8\nB. 10\nC. 13\nD. 15"
+        ],
+        "category": "Medium",
+        "answer": "C",
+        "answered": false
+    },
+    {
+        "question_num": 1,
+        "text": "What does JSON stand for?",
+        "choices": [
+            "A. Java Standard Object Notation\nB. JavaScript Object Notation\nC. Java Structured Output Network\nD. JavaScript Organized Nodes"
+        ],
+        "category": "Hard",
+        "answer": "B",
+        "answered": false
+    },
+    {
+        "question_num": 2,
+        "text": "Which is a valid JSON format?",
+        "choices": [
+            "A. {name:\"John\", age:20}\nB. {\"name\":\"John\",\"age\":20}\nC. [name:John]\nD. <name=John>"
+        ],
+        "category": "Hard",
+        "answer": "B",
+        "answered": false
+    },
+    {
+        "question_num": 3,
+        "text": "Which command is commonly used to download a repository from GitHub to your computer?",
+        "choices": [
+            "A. push\nB. clone\nC. commit\nD. merge\nAnswer: B"
+        ],
+        "category": "Hard",
+        "answer": "B",
+        "answered": false
+    },
+    {
+        "question_num": 4,
+        "text": "What will be the output of the following code?\narr = [10, 20, 30, 40]\nprint(arr[1] + arr[3])",
+        "choices": [
+            "A. 30\nB. 40\nC. 50\nD. 60"
+        ],
+        "category": "Hard",
+        "answer": "D",
+        "answered": false
+    },
+    {
+        "question_num": 5,
+        "text": "What will this output?\nprint(arr[1])  # from previous list\n",
+        "choices": [
+            "A. 2\nB. 4\nC. 6\nD. Error"
+        ],
+        "category": "Hard",
+        "answer": "B",
+        "answered": false
+    }
 ]

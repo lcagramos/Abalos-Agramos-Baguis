@@ -1,5 +1,6 @@
 import json
 import time
+import random
 
 with open("items.json", "r") as f:
     item = json.load(f)
@@ -7,8 +8,39 @@ with open("items.json", "r") as f:
 with open("inventory.json", "r") as f:
     data = json.load(f)
 
+with open("quizbee.json", "r", encoding="utf-8") as f:
+    questions = json.load(f)
+
+for question in questions:
+    question["answered"] = False
+
+with open("quizbee.json", "w", encoding="utf-8") as f:
+    json.dump(questions, f, indent=4)
+
+def get_menu_choice():
+    while True:
+        try:
+            menu_choice = int(input("\nEnter choice (1-4): "))
+            if 1 <= menu_choice <= 4:
+                return menu_choice
+            else:
+                print("Enter a number between 1 to 4.")
+        except ValueError:
+            print("Invalid input! Try again.")
+
+def get_category_choice():
+    while True:
+        try:
+            category_choice = int(input("Choose a category (1-3): "))
+            if 1 <= category_choice <= 3:
+                return category_choice
+            else:
+                print("Enter a number between 1 to 3.")
+        except ValueError:
+            print("Invalid input! Try again.")
 
 name = input("Welcome to Paithon's Gacha! What is your name, traveler? ")
+print(f"Greetings {name}, welcome to Paithon's Gacha!")
 
 print("\n\n")
 print(" .-.---------------------------------.-.")
@@ -31,65 +63,49 @@ print(" '------------------------------------'")
 
 
 print("\n\n")
-menuChoice = ""
-while True:
-    try:
-        menuChoice = int(input("\nEnter choice (1-4): "))
-        if 1 <= menuChoice <= 4:
-            break
-        else:
-            print("Enter a number between 1 to 4.")
-    except ValueError:
-        print("Invalid input! Try again.")
+menuChoice = get_menu_choice()
 
 if menuChoice == 1:
-    print("Paithon: Hello player! In this game, you must play Python-coding related minigames and answer questions"
+    input("Paithon: Hello player! In this game, you must play Python-coding related minigames and answer questions"
         "\nto obtain a special currency called Primogems in order to wish on the current banner. You need 1,600 "
-        "\nPrimogems to wish. Good luck!")
+        "\nPrimogems to wish. Good luck! (Press Enter to continue) ")
 
-    print("1. Easy (Formative Assessment)\n2. Medium (Alternative Assessment)\n3. Hard (Summative Assessment)")
-    categoryChoice = ""
     while True:
-        try:
-            categoryChoice = int(input("Choose a category (1-3): "))
-            if 1 <= categoryChoice <= 3:
-                break
-            else:
-                print("Enter a number between 1 to 3.")
-        except ValueError:
-            print("Invalid input! Try again.")
+        print("\n1. Easy (Formative Assessment)\n2. Medium (Alternative Assessment)\n3. Hard (Summative Assessment)")
 
-    matchingQuestion = []
-    for i in questions:
-        if i["category"] == "easy":
-            category = 1
-            i["primogems"] == 60
-        elif i["category"] == "medium":
-            category = 2
-            i["primogems"] == 110
-        else:
-            category = 3
-            i["primogems"] == 150
+        categoryChoice = get_category_choice()
 
-        if not i["answered"] and i["category"] == category:
-            matchingQuestion.append(i)
+        category = ""
+        if categoryChoice == 1:
+            category = "Easy"
+        elif categoryChoice == 2:
+            category = "Medium"
+        else: category = "Hard"
 
-        if matchingQuestion:
-            i["question_num"] = matchingQuestion[0]
+        matchingQuestions = []
 
-        else:
-            print("\nThat question was already answered, try again.")
+        for question in questions:
+            if category == question["category"] and not question["answered"]:
+                matchingQuestions.append(question)
+
+        if not matchingQuestions:
+            print("\nYou've answered everything in this category! Choose another category.")
             continue
+        else:
+            random.shuffle(matchingQuestions)
 
-    print("\n\n")
-    print(matchingQuestion[0]["question"])
-    print("\nChoices: ")
-    print(matchingQuestion[0]["choices"])
-    answer = input("\nEnter your answer: ")
+        for question in matchingQuestions:
+            if not question["answered"]:
+                print()
+                print(question["text"])
+                for i in (question["choices"]):
+                    print(i)
+                answer = input("\nEnter your answer: ")
+                input(f"The correct answer is {question['answer']} (Press Enter to continue) ")
 
-    for i in questions:
-        if i["category"] == category:
-            i["answered"] = True
+                question["answered"] = True
+                with open("quizbee.json", "w", encoding="utf-8") as f:
+                    json.dump(questions, f, indent=4)
 
 elif menuChoice == 2:
     print("Instructions (enter to continue):\n"
@@ -121,6 +137,7 @@ elif menuChoice == 2:
     print("When a 5-star is available and a golden star is visible when wishing, \n"
           "you have a 50/50 chance of obtaining either Xiao (limited character) \n"
           "or a character from the permanent wish (standard 5-star characters).")
+
 elif menuChoice == 3:
     print("╔╦╗╔═╗╦╔╗╔  ╔═╗╦═╗╔═╗╔═╗╦═╗╔═╗╔╦╗╔╦╗╔═╗╦═╗╔═╗ O")
     time.sleep(1)
