@@ -101,12 +101,19 @@ if menuChoice == 1:
                 print(i)
             answer = input("\nEnter your answer: ")
             input(f"The correct answer is {question['answer']} (Press Enter to continue) ")
+            if answer == question['answer'] and category == "Easy":
+                data['primogems'] = data['primogems'] + 60
+            elif category == "Medium":
+                data['primogems'] = data['primogems'] + 110
+            elif category == "Hard":
+                data['primogems'] = data['primogems'] + 160
 
             question["answered"] = True
             with open("quizbee.json", "w", encoding="utf-8") as f:
                 json.dump(questions, f, indent=4)
 
 elif menuChoice == 2:
+    input("If a statement hasn't printed, press enter to continue.")
     print("Instructions (enter to continue):\n"
           "")
 
@@ -121,7 +128,7 @@ elif menuChoice == 2:
     print("Paithon:")
     print(" o Easy gives 60 Primogems per question")
     print(" o Medium gives 110 Primogems per question")
-    print(" o Hard gives 150 Primogems per question")
+    print(" o Hard gives 160 Primogems per question")
     input(" o Each level contains five items!\n\n")
 
     print("Paithon: So, you might be asking, \"What do I do with all these primogems..?\" \n"
