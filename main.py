@@ -6,7 +6,7 @@ with open("items.json", "r") as f:
     item = json.load(f)
 
 with open("inventory.json", "r") as f:
-    data = json.load(f)
+    inventory = json.load(f)
 
 with open("quizbee.json", "r", encoding="utf-8") as f:
     questions = json.load(f)
@@ -103,11 +103,11 @@ if menuChoice == 1:
             input(f"The correct answer is {question['answer']} (Press Enter to continue) ")
 
             if answer == question['answer'] and category == "Easy":
-                data['primogems'] = data['primogems'] + 60
-            elif category == "Medium":
-                data['primogems'] = data['primogems'] + 110
-            elif category == "Hard":
-                data['primogems'] = data['primogems'] + 160
+                inventory['primogems'] += 60
+            elif answer == question['answer'] and category == "Medium":
+                inventory['primogems'] += 110
+            elif answer == question['answer'] and category == "Hard":
+                inventory['primogems'] += 160
             else:
                 print("67")
 

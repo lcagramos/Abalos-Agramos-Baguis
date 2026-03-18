@@ -14,7 +14,7 @@
         ],
         "category": "Easy",
         "answer": "A",
-        "answered": true
+        "answered": false
     },
     {
         "question_num": 2,
@@ -29,7 +29,7 @@
         ],
         "category": "Easy",
         "answer": "B",
-        "answered": true
+        "answered": false
     },
     {
         "question_num": 3,
@@ -46,7 +46,7 @@
         ],
         "category": "Easy",
         "answer": "A",
-        "answered": true
+        "answered": false
     },
     {
         "question_num": 4,
@@ -58,7 +58,7 @@
         ],
         "category": "Easy",
         "answer": "A",
-        "answered": true
+        "answered": false
     },
     {
         "question_num": 5,
@@ -70,7 +70,7 @@
         ],
         "category": "Easy",
         "answer": "B",
-        "answered": true
+        "answered": false
     },
     {
         "question_num": 1,
