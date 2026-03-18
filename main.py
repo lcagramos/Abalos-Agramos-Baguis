@@ -101,12 +101,15 @@ if menuChoice == 1:
                 print(i)
             answer = input("\nEnter your answer: ")
             input(f"The correct answer is {question['answer']} (Press Enter to continue) ")
+
             if answer == question['answer'] and category == "Easy":
                 data['primogems'] = data['primogems'] + 60
             elif category == "Medium":
                 data['primogems'] = data['primogems'] + 110
             elif category == "Hard":
                 data['primogems'] = data['primogems'] + 160
+            else:
+                print("67")
 
             question["answered"] = True
             with open("quizbee.json", "w", encoding="utf-8") as f:
