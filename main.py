@@ -97,19 +97,23 @@ if menuChoice == 1:
             print()
             for i in (question["text"]):
                 print(i)
+            print()
             for i in (question["choices"]):
                 print(i)
             answer = input("\nEnter your answer: ")
             input(f"The correct answer is {question['answer']} (Press Enter to continue) ")
 
             if answer == question['answer'] and category == "Easy":
-                inventory['primogems'] += 60
+                inventory[0]['primogems'] += 60
             elif answer == question['answer'] and category == "Medium":
-                inventory['primogems'] += 110
+                inventory[0]['primogems'] += 110
             elif answer == question['answer'] and category == "Hard":
-                inventory['primogems'] += 160
+                inventory[0]['primogems'] += 160
             else:
                 print("67")
+
+            with open("inventory.json", "w", encoding="utf-8") as f:
+                json.dump(inventory, f, indent=4)
 
             question["answered"] = True
             with open("quizbee.json", "w", encoding="utf-8") as f:

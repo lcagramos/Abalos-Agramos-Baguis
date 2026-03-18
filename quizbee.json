@@ -29,7 +29,7 @@
         ],
         "category": "Easy",
         "answer": "B",
-        "answered": false
+        "answered": true
     },
     {
         "question_num": 3,
@@ -58,7 +58,7 @@
         ],
         "category": "Easy",
         "answer": "A",
-        "answered": false
+        "answered": true
     },
     {
         "question_num": 5,
