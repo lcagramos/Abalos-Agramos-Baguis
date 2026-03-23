@@ -19,8 +19,7 @@ pull = 10
 
 
 for i in range(pull, 0, -1):
-   if i == 10: # pull 10x
-       # may guaranteed na 4*
+   if i == 10:
        guaranteed = list(characters["onBanner4"].keys()) + list(characters["offBanner4"].keys()) + list(weapons["4*"].keys()) # equal chances
        choice = random.choice(guaranteed)
        print(f"You got {choice}")

@@ -10,6 +10,10 @@ with open("inventory.json", "r") as f:
 with open("quizbee.json", "r") as f:
     questions = json.load(f)
 
+for question in questions:
+    question["answered"] = False
+    with open("quizbee.json", "w") as f:
+        json.dump(questions, f, indent=4)
 
 name = input("Welcome to Paithon's Gacha! What is your name, traveler? ")
 
@@ -51,7 +55,8 @@ if menuChoice == 1:
         "\nPrimogems to wish. Good luck!")
 
     while True:
-        print("\nChoose a category (or 0 to quit):")
+        print("\nChoose a category (or 0 to wish):")
+        print("0. Go stargazing")
         print("1. Easy (Formative Assessment)")
         print("2. Medium (Alternative Assessment)")
         print("3. Hard (Summative Assessment)")
@@ -68,7 +73,22 @@ if menuChoice == 1:
                 print("Invalid input! Try again.")
 
         if categoryChoice == 0:
-            print("Paithon: Thanks for playing! Bye! (˶ᵔᗜᵔ˶)ﾉﾞ")
+            print("You gaze upon the stars as you wish for a companion... ⋆˙⟡ ⋆.˚ ⊹₊⟡ ⋆")
+            time.sleep(2)
+            print("You see a shooting star.")
+
+            print("Make a wish? (1600 primogems)")
+            wChoice = input("(Yes/No: ").strip().lower()
+
+            if wChoice == "yes":
+                if data["primogems"] >= 1600:
+                    data["primogems"] -= 1600
+
+                else:
+                    print("You don't have enough primogems... (¬_¬＂)")
+
+            elif wChoice == "no":
+                print("You decide to save your wish for another day. ✧｡٩(ˊᗜˋ )و✧*｡")
             break
 
         if categoryChoice == 1:
