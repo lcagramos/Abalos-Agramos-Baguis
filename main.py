@@ -1,5 +1,6 @@
 import json
 import time
+import random
 
 with open("items.json", "r") as f:
     item = json.load(f)
@@ -14,6 +15,8 @@ for question in questions:
     question["answered"] = False
     with open("quizbee.json", "w") as f:
         json.dump(questions, f, indent=4)
+
+newItem = ""
 
 name = input("Welcome to Paithon's Gacha! What is your name, traveler? ")
 
@@ -83,6 +86,19 @@ if menuChoice == 1:
             if wChoice == "yes":
                 if data["primogems"] >= 1600:
                     data["primogems"] -= 1600
+                    for i in range(0,8):
+                        chance = random.randint(1, 100)
+                        if chance == range(1,60):
+                            newItem = item[0][random.randint(0,4)]
+                            print(f"You find a weapon, a unique kind... it's the {newItem}!")
+                            data["inv"].append(newItem)
+                        elif chance == range(61,75):
+                            newItem = item[1][random.randint(0,4)]
+                            print(f"You find a weapon, a unique kind... it's the {newItem}!")
+                            data["inv"].append(newItem)
+
+
+
 
                 else:
                     print("You don't have enough primogems... (¬_¬＂)")
