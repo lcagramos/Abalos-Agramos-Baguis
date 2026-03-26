@@ -88,14 +88,51 @@ if menuChoice == 1:
                     data["primogems"] -= 1600
                     for i in range(0,8):
                         chance = random.randint(1, 100)
-                        if chance == range(1,60):
+                        if chance == range(1,50):
                             newItem = item[0][random.randint(0,4)]
                             print(f"You find a weapon, a unique kind... it's the {newItem}!")
                             data["inv"].append(newItem)
-                        elif chance == range(61,75):
-                            newItem = item[1][random.randint(0,4)]
-                            print(f"You find a weapon, a unique kind... it's the {newItem}!")
+
+                        elif chance == range(51,65):
+                            newItem = item[1][1][random.randint(0,11)]
+                            print(f"You wished, and you received 4* {newItem}!")
                             data["inv"].append(newItem)
+
+                        elif chance == range(66,85):
+                            newItem = item[1][0][random.randint(0, 4)]
+                            print(f"You find a new companion, it's {newItem}!")
+                            data["inv"].append(newItem)
+
+                        elif chance == range(86,99):
+                            fiftyF = random.randint(1,100)
+                            print(f"You find a very special companion...!")
+                            print("star effect")
+
+                            if fiftyF == range(1,50):
+                                newItem = item[2][0]
+                                print("You got the limited5-star character, Adeptus Xiao!")
+                                time.sleep(2)
+                                print(r"""ascii""")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                data["inv"].append(newItem)
+
+
 
 
 
