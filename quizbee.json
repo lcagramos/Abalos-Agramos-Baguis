@@ -19,7 +19,7 @@
     {
         "question_num": 2,
         "text": [
-            "Which of the following is a list in Python"
+            "Which of the following is a list in Python?"
         ],
         "choices": [
             "A. {1,2,3}",
