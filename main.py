@@ -16,8 +16,6 @@ for question in questions:
     with open("quizbee.json", "w") as f:
         json.dump(questions, f, indent=4)
 
-newItem = ""
-
 name = input("Welcome to Paithon's Gacha! What is your name, traveler? ")
 
 while True:
@@ -31,11 +29,13 @@ while True:
     print("  |                                  |")
     print("  |  2. Go stargazing                |")
     print("  |                                  |")
-    print("  |  3. How to Play                  |")
+    print("  |  3. View Inventory               |")
     print("  |                                  |")
-    print("  |  4. Credits                      |")
+    print("  |  4. How to Play                  |")
     print("  |                                  |")
-    print("  |  5. Quit                         |")
+    print("  |  5. Credits                      |")
+    print("  |                                  |")
+    print("  |  6. Quit                         |")
     print("  |                                  |")
     print("  |____    _______    __  ____    ___|")
     print(" / )                                  )")
@@ -47,11 +47,11 @@ while True:
     menuChoice = ""
     while True:
         try:
-            menuChoice = int(input("\nEnter choice (1-5): "))
-            if 1 <= menuChoice <= 5:
+            menuChoice = int(input("\nEnter choice (1-6): "))
+            if 1 <= menuChoice <= 6:
                 break
             else:
-                print("Enter a number between 1 to 5.")
+                print("Enter a number between 1 to 6.")
         except ValueError:
             print("Invalid input! Try again.")
 
@@ -126,10 +126,10 @@ while True:
 
     elif menuChoice == 2:
         print("You gaze upon the stars as you wish for a companion... ⋆˙⟡ ⋆.˚ ⊹₊⟡ ⋆")
-        time.sleep(2)
+        time.sleep(1.5)
         print("\nYou see a shooting star.")
 
-        print("\nMake a wish? (1600 primogems)")
+        print("Make a wish? (1600 Primogems)")
         wChoice = ""
         while True:
             wChoice = input("\n(Yes/No): ").strip().lower()
@@ -140,20 +140,22 @@ while True:
                 print("Enter (Yes/No):  ")
 
         if wChoice == "yes":
-            if data["primogems"] >= 1600:
-                data["primogems"] -= 1600
+            if data[0]["primogems"] >= 1600:
+                data[0]["primogems"] -= 1600
 
-                for i in range(0, 8):
+                for i in range(10):
+                    newItem = ""
                     chance = random.randint(1, 100)
-                    if chance == range(1, 50):
-                        newItem = item[0][random.randint(0, 4)]
-                        print(f"You find a weapon, a unique kind... it's the {newItem}! ☆☆☆")
-                        data["inv"].append(newItem)
+                    if chance in range(1, 50):
+                        newItem = item[0]["3*"][random.randint(0, 4)]
+                        input(f"You find a weapon, a unique kind... it's the {newItem}! ☆☆☆ ")
+                        data[0]["inv"].append(newItem)
 
-                    elif chance == range(51, 65):
-                        newItem = item[1][1][random.randint(0, 11)]
-                        print("""⠀⠀⢀⠀⠀⠀⠀⠀⠀⠀⠀⠀    ⣀⣀⡠⢣⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-                    ⠀⢸⢉⡗⠀⠀⠀⠀⠀⠀⠀⠀⠈⡆⠀⠈⡱⠖⠀⠀⠀⠀⠀ ⠀⠀⠀⣄⣠⠆⠀
+                    elif chance in range(51, 65):
+                        newItem = item[1]["OB4*"][random.randint(0, 11)]
+                        print("""   
+                ⠀   ⠀⢀⠀⠀⠀⠀⠀⠀ ⠀   ⣀⣀⡠⢣⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+                    ⠀⢸⢉⡗⠀⠀⠀⠀⠀⠀⠀⠀⠈⡆⠀⠈⡱⠖⠀⠀⠀⠀⠀ ⠀⠀⠀ ⣄⣠⠆⠀
                     ⠀⠀⠀⠁⠀⠀⠀⠀⠀⠀⠀⠀⠰⠓⠒⢴⠀⠀⠀⠀ ⠀ ⠀⠀⣀⠀⠀⢨⠀⣰⠃
                     ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   ⠀⠀⢀⠜⢹⡀⠀⠀⠀⠈⠀
                     ⠀⠀⠀⠀⢠⣀⣶⠀⠀⠀⠀⠀⠀  ⠀⢤⢀⣀⣀⣀⡠⠋⠀⠀⢇⠀⠀⠀⠀⠀
@@ -167,20 +169,21 @@ while True:
                     ⡰⠋⠀⠀⠀⠀⠀⠀⠀⠀⣸⠤⡐⠁⠀⠀⠀⠀⠀⠀⠀⠃⠀⠀⠀⠀⠀⠀⠀⠀""")
                         time.sleep(2)
 
-                        print(f"You wished, and you received {newItem}! ☆☆☆☆")
-                        data["inv"].append(newItem)
+                        input(f"You wished, and you received {newItem}! ☆☆☆☆ ")
+                        data[0]["inv"].append(newItem)
 
-                    elif chance == range(66, 85):
-                        newItem = item[1][0][random.randint(0, 4)]
+                    elif chance in range(66, 85):
+                        newItem = item[1]["B4*"][random.randint(0, 2)]
 
-                        print(f"You find a new companion, it's {newItem}! ☆☆☆☆")
-                        data["inv"].append(newItem)
+                        input(f"You find a new companion, it's {newItem}! ☆☆☆☆ ")
+                        data[0]["inv"].append(newItem)
 
-                    elif chance == range(86, 99):
+                    elif chance in range(86, 99):
                         fiftyF = random.randint(1, 100)
-                        print(f"You find a very special companion...!")
-                        print("""⠀⠀⢀⠀⠀⠀⠀⠀⠀⠀⠀⠀    ⣀⣀⡠⢣⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-                        ⠀⢸⢉⡗⠀⠀⠀⠀⠀⠀⠀⠀⠈⡆⠀⠈⡱⠖⠀⠀⠀⠀⠀ ⠀⠀⠀⣄⣠⠆⠀
+                        input(f"You find a very special companion...! ")
+                        print("""
+                        ⠀⠀⢀⠀⠀⠀⠀ ⠀    ⣀⣀⡠⢣⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+                        ⠀⢸⢉⡗⠀⠀⠀⠀⠀⠀⠀⠀⠈⡆⠀⠈⡱⠖⠀⠀⠀⠀⠀  ⠀⠀⠀⣄⣠⠆⠀
                         ⠀⠀⠀⠁⠀⠀⠀⠀⠀⠀⠀⠀⠰⠓⠒⢴⠀⠀⠀⠀ ⠀ ⠀⠀⣀⠀⠀⢨⠀⣰⠃
                         ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   ⠀⠀⢀⠜⢹⡀⠀⠀⠀⠈⠀
                         ⠀⠀⠀⠀⢠⣀⣶⠀⠀⠀⠀⠀⠀  ⠀⢤⢀⣀⣀⣀⡠⠋⠀⠀⢇⠀⠀⠀⠀⠀
@@ -193,8 +196,8 @@ while True:
                         ⠀⣰⣿⠞⠉⠀⠀⠀⠀⠀⡄⡰⡆⠀⠀⠀⠀⠀⠀⢐⣌⡶⠀⠀⠀⠀⠀⠀⠀⠀
                         ⡰⠋⠀⠀⠀⠀⠀⠀⠀⠀⣸⠤⡐⠁⠀⠀⠀⠀⠀⠀⠀⠃⠀⠀⠀⠀⠀⠀⠀⠀""")
 
-                        if fiftyF == range(1, 50):
-                            newItem = item[2][0]
+                        if fiftyF in range(1, 50):
+                            newItem = item[2]["B5*"][0]
 
                             print("""⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
                             ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -221,9 +224,10 @@ while True:
                             ⠘⣇⠂⢀⣀⣀⠤⠞⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
                             ⠀⠈⠉⠉⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
                             ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀""")
-                            print("You meet the limited 5-star character, Adeptus Xiao! ☆☆☆☆☆")
-                            time.sleep(2)
-                            print(r"""⠀⠀⠀⠀⢀⠀⠉⠀⠀⣀⣤⠖⠀⠀⠀⠀⠐⠢⠄⠒⠢⠀⠀⠉⠁⢲⣶⣶⣶⣶⣶⣦⣠⡿⠟⠉⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+                            input("You meet the limited 5-star character, Adeptus Xiao! ☆☆☆☆☆ ")
+                            time.sleep(1)
+                            print(r"""
+                            ⠀⠀               ⠀⠀⢀⠀⠉⠀⠀⣀⣤⠖⠀⠀⠀⠀⠐⠢⠄⠒⠢⠀⠀⠉⠁⢲⣶⣶⣶⣶⣶⣦⣠⡿⠟⠉⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
                                         ⠀⠀⠀⠀⠋⠀⠀⣰⣿⠿⣶⣤⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣿⡿⠛⠛⠻⣿⣿⣿⣿⣿⣿⡟⠛⠛⠒⢦⣤⣀⡀⠞⠉⠉⠓⢦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
                                         ⠀⠀⣀⣄⣀⠀⣼⠋⠀⠀⠈⢻⣷⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⠖⠻⡆⠀⠀⠀⠈⣿⣿⣿⣿⣟⡀⠀⠀⠀⠀⠟⠛⠻⡆⠀⠀⠀⠀⠹⠟⢲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
                                         ⠀⠄⠁⠀⠉⣿⣿⣠⡆⠀⠀⠀⢿⣷⡀⠀⠀⠀⠀⢠⣞⠃⢠⠟⠁⠀⠀⢹⣰⢄⣀⡰⠋⠉⠉⠀⠈⠙⠲⣀⠀⠠⠄⠀⠀⢹⡶⠦⣤⡖⠦⠄⠀⢳⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -269,16 +273,34 @@ while True:
                                         ⠀⠀⠀⠀⠈⣿⣧⠀⠀⠀⠈⢣⡈⣦⠀⢠⣿⣿⣿⣿⡽⠋⠀⠀⠀⠀⠀⠀⠀⠀⢰⣛⣿⣟⢿⡞⣇⢀⣾⣿⠉⢻⣿⣿⣻⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⢿⡟⠀⠀⠀⢸⣿
                                         ⠀⠀⠀⠀⠀⠹⣿⡇⠀⠀⠀⠀⠉⠹⣤⣿⣿⣿⠿⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠸⣿⣿⡿⠀⠙⢿⣿⣿⣿⣿⠟⠀⠛⡿⣿⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⡇⠀⠀⠀⢸⣿
                                         ⠀⠀⠀⠀⠀⠀⢻⣿⣄⠀⠀⡀⣀⣴⣿⣿⡟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣸⠩⣿⡀⠀⢀⡼⠛⢹⣿⡅⠀⠀⠀⣧⣻⢵⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⠇⠀⠀⠀⠀⢻""")
-                            data["inv"].append(newItem)
+                            data[0]["inv"].append(newItem)
+
+                        else:
+                            newItem = item[2]["OB5*"][random.randint(0, 4)]
+                            input(f"You find a new companion, it's {newItem}! ☆☆☆☆☆ ")
+                            data[0]["inv"].append(newItem)
+
+                with open("data.json", "w") as f:
+                    json.dump(questions, f, indent=4)
+                input("\nPress enter to return to main menu! ")
+
             else:
-                print("You don't have enough primogems... (¬_¬＂)")
+                print("You don't have enough Primogems... (¬_¬＂)")
+                input("Press enter to go back to the main menu! ")
 
         elif wChoice == "no":
             print("You decide to save your wish for another day. ✧｡٩(ˊᗜˋ )و✧*｡")
-            input("Press enter to go back to the main menu!")
-            continue
+            input("Press enter to go back to the main menu! ")
 
     elif menuChoice == 3:
+        print(f"You currently own {data[0]["primogems"]} Primogems.")
+        print("You currently own: ")
+        owned = set(data[0]["inv"])
+        for item in owned:
+            print("-", item)
+        input("\nPress enter to go back to the main menu! ")
+
+    elif menuChoice == 4:
         print("Instructions (enter to continue):\n"
               "")
 
@@ -309,10 +331,9 @@ while True:
               "you have a 50/50 chance of obtaining either Xiao (limited character) \n"
               "or a character from the permanent wish (standard 5-star characters).")
 
-        input("\nPress enter to go back to the main menu!" )
-        continue
+        input("\nPress enter to go back to the main menu! ")
 
-    elif menuChoice == 4:
+    elif menuChoice == 5:
         print("╔╦╗╔═╗╦╔╗╔  ╔═╗╦═╗╔═╗╔═╗╦═╗╔═╗╔╦╗╔╦╗╔═╗╦═╗╔═╗ O")
         time.sleep(1)
         print("║║║╠═╣║║║║  ╠═╝╠╦╝║ ║║ ╦╠╦╝╠═╣║║║║║║║╣ ╠╦╝╚═╗ ")
@@ -341,7 +362,6 @@ while True:
         print("╚╝╩ ╩╚═╝ ╩   ╚═╝╩ ╩╚═╝╚═╝╩╚═╝    ")
 
         input("\nPress enter to go back to the main menu! ")
-        continue
 
     else:
         print(f"Paithon: Leaving already,{name}?")
