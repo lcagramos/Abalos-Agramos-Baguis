@@ -162,7 +162,7 @@
             "Which command is commonly used to download a repository from GitHub to your computer?"
         ],
         "choices": [
-            "A. push\nB. clone\nC. commit\nD. merge\nAnswer: B"
+            "A. push\nB. clone\nC. commit\nD. merge\n"
         ],
         "category": "Hard",
         "answer": "B",

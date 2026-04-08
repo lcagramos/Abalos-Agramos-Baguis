@@ -16,7 +16,10 @@ for question in questions:
     with open("quizbee.json", "w") as f:
         json.dump(questions, f, indent=4)
 
-name = input("Welcome to Paithon's Gacha! What is your name, traveler? ")
+name = ""
+while name == "":
+    name = input("\nWelcome to Paithon's Gacha! What is your name, traveler? ").strip()
+    if name == "" : print("Please enter a name.")
 
 while True:
     print("\n\n")
@@ -167,7 +170,6 @@ while True:
                     ⠀⠀⢠⡪⡪⡲⠕⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠀⠀⠀⠈⠃⠀⠀⠀⠀
                     ⠀⣰⣿⠞⠉⠀⠀⠀⠀⠀⡄⡰⡆⠀⠀⠀⠀⠀⠀⢐⣌⡶⠀⠀⠀⠀⠀⠀⠀⠀
                     ⡰⠋⠀⠀⠀⠀⠀⠀⠀⠀⣸⠤⡐⠁⠀⠀⠀⠀⠀⠀⠀⠃⠀⠀⠀⠀⠀⠀⠀⠀\n""")
-                        time.sleep(2)
 
                         input(f"You wished, and you received {newItem}! ☆☆☆☆ ")
                         data[0]["inv"].append(newItem)
