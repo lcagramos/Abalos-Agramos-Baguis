@@ -191,5 +191,11 @@
         "category": "Hard",
         "answer": "B",
         "answered": false
+    },
+    {
+        "question_num": 6,
+        "text": "Unscramble the word: fi smatetnte",
+        "category": "Easy",
+        "answer": "if statement"
     }
 ]
