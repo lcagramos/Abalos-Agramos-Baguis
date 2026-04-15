@@ -73,6 +73,41 @@
         "answered": false
     },
     {
+        "question_num": 6,
+        "text": "Unscramble the word: fi smatetnte",
+        "category": "Easy",
+        "answer": "if statement",
+        "answered": false
+    },
+    {
+        "question_num": 7,
+        "text": "Unscramble the word: putin",
+        "category": "Easy",
+        "answer": "input",
+        "answered": false
+    },
+    {
+        "question_num": 8,
+        "text": "Unscramble the word: lwihe polo",
+        "category": "Easy",
+        "answer": "while loop",
+        "answered": false
+    },
+    {
+        "question_num": 9,
+        "text": "Unscramble the word: rfo lpoo",
+        "category": "Easy",
+        "answer": "for loop",
+        "answered": false
+    },
+    {
+        "question_num": 10,
+        "text": "Unscramble the word: rarya",
+        "category": "Easy",
+        "answer": "array",
+        "answered": false
+    },
+    {
         "question_num": 1,
         "text": [
             "Which keyword is used to create a function in Python?"
@@ -145,6 +180,41 @@
         "answered": false
     },
     {
+        "question_num": 6,
+        "text": "Unscramble the word: itoncfnu",
+        "category": "Medium",
+        "answer": "function",
+        "answered": false
+    },
+    {
+        "question_num": 7,
+        "text": "Unscramble the word: tarerempa",
+        "category": "Medium",
+        "answer": "parameter",
+        "answered": false
+    },
+    {
+        "question_num": 8,
+        "text": "Unscramble the word: nosj",
+        "category": "Medium",
+        "answer": "json",
+        "answered": false
+    },
+    {
+        "question_num": 9,
+        "text": "Unscramble the word: laebavir",
+        "category": "Medium",
+        "answer": "variable",
+        "answered": false
+    },
+    {
+        "question_num": 10,
+        "text": "Unscramble the word: ppndea",
+        "category": "Medium",
+        "answer": "append",
+        "answered": false
+    },
+    {
         "question_num": 2,
         "text": [
             "Which is a valid JSON format?"
@@ -194,8 +264,37 @@
     },
     {
         "question_num": 6,
-        "text": "Unscramble the word: fi smatetnte",
-        "category": "Easy",
-        "answer": "if statement"
+        "text": "Unscramble the word: slet.imepe",
+        "category": "Hard",
+        "answer": "time.sleep",
+        "answered": false
+    },
+    {
+        "question_num": 7,
+        "text": "Unscramble the word: sitl ihnrcmsoneepo",
+        "category": "Hard",
+        "answer": "list comprehension",
+        "answered": false
+    },
+    {
+        "question_num": 8,
+        "text": "Unscramble the word: oneloams-tindiw ayrra",
+        "category": "Hard",
+        "answer": "two-dimensional array",
+        "answered": false
+    },
+    {
+        "question_num": 9,
+        "text": "Unscramble the word: tneesd cityarndio",
+        "category": "Hard",
+        "answer": "nested dictionary",
+        "answered": false
+    },
+    {
+        "question_num": 10,
+        "text": "Unscramble the word: tomrip mdnroa",
+        "category": "Hard",
+        "answer": "import random",
+        "answered": false
     }
 ]
