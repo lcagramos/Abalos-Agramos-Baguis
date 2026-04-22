@@ -3,7 +3,7 @@ import json
 import time
 import random
 
-# ---------JSON file handling-----------
+# ---------JSON file handling---------
 with open("items.json", "r") as f:
     item = json.load(f)
 
@@ -16,12 +16,23 @@ with open("quizbee.json", "r") as f:
 for question in questions:
     question["answered"] = False
     with open("quizbee.json", "w") as f:
+        # noinspection PyTypeChecker
         json.dump(questions, f, indent=4)
 
+# ----------Initialization-----------
 newItem = ""
+categoryChoice = ""
+menuChoice = ""
+
 BLUE = "\033[94m"
 YELLOW = "\033[93m"
 RESET = "\033[0m"
+
+# --------Defining Functions---------
+def save_data():
+    with open("inventory.json", "w") as F:
+        # noinspection PyTypeChecker
+        json.dump(data, F, indent=4)
 
 def scrolling_credits():
     print("╔╦╗╔═╗╦╔╗╔  ╔═╗╦═╗╔═╗╔═╗╦═╗╔═╗╔╦╗╔╦╗╔═╗╦═╗╔═╗ O")
@@ -79,12 +90,30 @@ def instructions():
           "you have a 50/50 chance of obtaining either Xiao (limited character) \n"
           "or a character from the permanent wish (standard 5-star characters).")
 
+# --------------------------------------------------------------------------------------------------------------------------------
+
+print( YELLOW + r"""                                                          .-'''-.                                                              _..._                             ___   
+                                                         '   _    \                                                         .-'_..._''.                       .'/   \  
+_________   _...._              .--.           .       /   /` '.   \    _..._    ,.--.                                    .' .'      '.\  .                  / /     \ 
+\        |.'      '-.           |__|         .'|      .   |     \  '  .'     '. //    \                .--./)            / .'           .'|                  | |     | 
+ \        .'```'.    '.         .--.     .| <  |      |   '      |  '.   .-.   .\\    |               /.''\\            . '            <  |                  | |     | 
+  \      |       \     \   __   |  |   .' |_ | |      \    \     / / |  '   '  | `'-)/               | |  | |      __   | |             | |             __   |/`.   .' 
+   |     |        |    |.:--.'. |  | .'     || | .'''-.`.   ` ..' /  |  |   |  |   /'  _              \`-' /    .:--.'. | |             | | .'''-.   .:--.'.  `.|   |  
+   |      \      /    ./ |   \ ||  |'--.  .-'| |/.'''. \  '-...-'`   |  |   |  |     .' |             /("'`    / |   \ |. '             | |/.'''. \ / |   \ |  ||___|  
+   |     |\`'-.-'   .' `" __ | ||  |   |  |  |  /    | |             |  |   |  |    .   | /           \ '---.  `" __ | | \ '.          .|  /    | | `" __ | |  |/___/  
+   |     | '-....-'`    .'.''| ||__|   |  |  | |     | |             |  |   |  |  .'.'| |//            /'""'.\  .'.''| |  '. `._____.-'/| |     | |  .'.''| |  .'.--.  
+  .'     '.            / /   | |_      |  '.'| |     | |             |  |   |  |.'.'.-'  /            ||     ||/ /   | |_   `-.______ / | |     | | / /   | |_| |    | 
+'-----------'          \ \._,\ '/      |   / | '.    | '.            |  |   |  |.'   \_.'             \'. __// \ \._,\ '/            `  | '.    | '.\ \._,\ '/\_\    / 
+                        `--'  `"       `'-'  '---'   '---'           '--'   '--'                       `'---'   `--'  `"                '---'   '---'`--'  `"  `''--'  """ + RESET)
+
 name = ""
 while name == "":
     name = input("Paithon: Welcome to Paithon's Gacha! What is your name, traveler? ").strip()
     if name == "": print("Please enter a name.")
-print(f"Paithon: What a lovely name, {name}!")
+print(f"Paithon: What a lovely name, {name}! ✧｡٩(ˊᗜˋ )و✧*｡"
+      f"yes")
 
+# ---------------Main Menu loop-----------------
 while True:
     print("\n\n")
     print(" .-.---------------------------------.-.")
@@ -112,7 +141,6 @@ while True:
 
     print("\n\n")
 
-    menuChoice = ""
     while True:
         try:
             menuChoice = int(input("\nEnter menu choice (1-6): "))
@@ -134,58 +162,78 @@ while True:
         print("2. Medium (Alternative Assessment)")
         print("3. Hard (Summative Assessment)")
 
-        categoryChoice = ""
+
         while True:
             try:
                 categoryChoice = int(input("Choose a category (1-3, 0 to quit): "))
-                if 0 <= categoryChoice <= 3:
-                    break
-                else:
-                    print("Enter a number between 0 to 3.")
             except ValueError:
                 print("Invalid input! Try again.")
 
+            if categoryChoice == 0:
+                continue
+
             if categoryChoice == 1:
                 category = "Easy"
-                reward = 60
+                reward = 90
             elif categoryChoice == 2:
                 category = "Medium"
-                reward = 110
+                reward = 140
             else:
                 category = "Hard"
-                reward = 150
+                reward = 190
 
-            while True:
-                matchingQuestion = [q for q in questions if q["category"] == category]
+            quiz_active = True
+            quiz_active = True
+            while quiz_active:
+                # We filter for questions that belong to the category AND haven't been answered
+                matching = [q for q in questions if q["category"] == category and q["answered"] == False]
 
-                if not matchingQuestion:
-                    print(f"No questions available for {category}.")
-                    break
-
-                question = random.choice(matchingQuestion)
-
-                if isinstance(question["text"], list):
-                    text = " ".join(question["text"])
+                if not matching:
+                    print(f"\nPaithon: No more {category} questions left! You've cleared this level!")
+                    quiz_active = False  # This breaks the quiz loop
+                    input("Press Enter to go to Main Menu...")
                 else:
-                    text = question["text"]
+                    question = random.choice(matching)
 
-                print("\n" + text)
-                print("Choices:", ", ".join(question["choices"]))
-                answer = input("Enter your answer: ")
+                    # Handle text format
+                    text = " ".join(question["text"]) if isinstance(question["text"], list) else question["text"]
 
-                if answer.lower() == question["answer"].lower():
-                    print(f"Paithon: Correct! You earned {reward} Primogems ദ്ദി(｡•̀,<)~✩‧₊\n")
-                    data[0]["primogems"] += reward
-                    with open("inventory.json", "w") as f:
-                        json.dump(data, f, indent=4)
-                else:
-                    print(f"Paithon: Wrong! (╥﹏╥) The correct answer is {question['answer']}.\n")
+                    print(f"\n--- {category} ---")
+                    if question["question_num"] >= 6:
+                        print("\n" + text)
+                    else:
+                        print("\n" + text)
+                        print("Choices:", ", ".join(question["choices"]))
 
-                question["answered"] = True
+                    answer = input("Answer: ").strip().lower()
+
+                    if answer == question["answer"].lower():
+                        print(f"Paithon: Correct! You earned {reward} Primogems ദ്ദി(｡•̀,<)~✩‧₊\n")
+                        data[0]["primogems"] += reward
+                        save_data()
+                    else:
+                        print(f"Paithon: Wrong! (╥﹏╥) The correct answer is {question['answer']}.\n")
+
+                    # Mark as answered and save questions
+                    question["answered"] = True
+                    with open("quizbee.json", "w") as f:
+                        json.dump(questions, f, indent=4)
+
+                    # Ask to continue
+                    choice = input("\nNext question? 𝘕𝘰 𝘵𝘰 𝘳𝘦𝘵𝘶𝘳𝘯 𝘵𝘰 𝘮𝘦𝘯𝘶 \n"
+                                   "(Yes/No): ").lower().strip()
+                    if choice != 'y' and choice != 'yes':
+                        quiz_active = False
+
 
             # Save updated questions
             with open("quizbee.json", "w") as f:
+                # noinspection PyTypeChecker
                 json.dump(questions, f, indent=4)
+
+            choice = input("\nNext question? (Yes/No): ").lower().strip()
+            if choice != 'y' and choice != 'yes':
+                quiz_active = False
 
     elif menuChoice == 2:
 
@@ -197,8 +245,9 @@ while True:
         wChoice = input("(Yes/No): ").strip().lower()
 
         if wChoice == "yes":
-            if data[0]["primogems"] >= 1600:
-                 data[0]["primogems"] -= 1600
+            if data[0]['primogems'] >= 1600:
+                 data[0]['primogems'] -= 1600
+                 save_data()
 
                  newItem = item[1]["4*"][random.randint(0,2)]
 
@@ -218,6 +267,7 @@ while True:
                                      """ + RESET)
                  input(f"You find a formidable companion, a unique kind... it's {newItem}! ☆☆☆☆")
                  data[0]["inv"].append(newItem)
+                 save_data()
 
                  for i in range(9):
                      chance = random.randint(1, 100)
@@ -227,6 +277,7 @@ while True:
                          newItem = item[0]["3*"][random.randint(0,4)]
                          input(f"You find a weapon, a unique kind... it's the {newItem}! ☆☆☆")
                          data[0]["inv"].append(newItem)
+                         save_data()
 
 
                      elif 51 <= chance <= 65:
@@ -249,6 +300,7 @@ while True:
 
                          input(f"You wished, and you received {newItem}! ☆☆☆☆")
                          data[0]["inv"].append(newItem)
+                         save_data()
 
 
                      elif 66 <= chance <= 85:
@@ -271,8 +323,9 @@ while True:
 
                          input(f"You find a new companion, it's {newItem}! ☆☆☆☆")
                          data[0]["inv"].append(newItem)
+                         save_data()
 
-                     elif 86 <= chance <= 99:
+                     elif 86 <= chance <= 100:
                          fiftyF = random.randint(1,100)
                          print(f"You find a very special companion...!")
 
@@ -406,6 +459,7 @@ while True:
                              print(r"            ⠀⠀⠀⠀⠀⠀⢻⣿⣄⠀⠀⡀⣀⣴⣿⣿⡟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣸⠩⣿⡀⠀⢀⡼⠛⢹⣿⡅⠀⠀⠀⣧⣻⢵⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⠇⠀⠀⠀⠀⢻")
 
                              data[0]["inv"].append(newItem)
+                             save_data()
 
                              time.sleep(0.5)
                              print(f"Paithon: Congratulations, {name}! You've reached the main goal of this game. \n"
@@ -423,16 +477,23 @@ while True:
                               print("You find a 5-star from the permanent wish! A formidable companion indeed~")
                               print(f"You got...")
                               input(f"☆☆☆☆☆ {newItem}! ")
+                              data[0]["inv"].append(newItem)
+                              save_data()
                      else:
                          print("You don't have enough primogems... (¬_¬＂)")
+
+                 #Ensures inventory is saved
+                 save_data()
 
             elif wChoice == "no":
                 print("You decide to save your wish for another day. ✧｡٩(ˊᗜˋ )و✧*｡")
 
     elif menuChoice == 3:
         print(f"You currently own {data[0]['primogems']} Primogems.")
+
         print("You currently own: ")
         owned = set(data[0]["inv"])
+
         for item in owned:
             print("-", item)
         input("\nPress enter to go back to the main menu! ")

@@ -70,7 +70,7 @@
         ],
         "category": "Easy",
         "answer": "B",
-        "answered": false
+        "answered": true
     },
     {
         "question_num": 6,
@@ -105,7 +105,7 @@
         "text": "Unscramble the word: rarya",
         "category": "Easy",
         "answer": "array",
-        "answered": false
+        "answered": true
     },
     {
         "question_num": 1,
