@@ -14,7 +14,7 @@
         ],
         "category": "Easy",
         "answer": "A",
-        "answered": false
+        "answered": true
     },
     {
         "question_num": 2,
@@ -70,7 +70,7 @@
         ],
         "category": "Easy",
         "answer": "B",
-        "answered": true
+        "answered": false
     },
     {
         "question_num": 6,
@@ -105,7 +105,7 @@
         "text": "Unscramble the word: rarya",
         "category": "Easy",
         "answer": "array",
-        "answered": true
+        "answered": false
     },
     {
         "question_num": 1,
@@ -198,7 +198,7 @@
         "text": "Unscramble the word: nosj",
         "category": "Medium",
         "answer": "json",
-        "answered": false
+        "answered": true
     },
     {
         "question_num": 9,
@@ -212,7 +212,7 @@
         "text": "Unscramble the word: ppndea",
         "category": "Medium",
         "answer": "append",
-        "answered": false
+        "answered": true
     },
     {
         "question_num": 2,
