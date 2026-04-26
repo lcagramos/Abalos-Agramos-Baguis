@@ -329,7 +329,7 @@ while True:
             reward = 140
         else:
             category = "Hard"
-            reward = 190
+            reward = 180
 
         quiz_active = True
         while quiz_active:
