@@ -14,7 +14,7 @@
         ],
         "category": "Easy",
         "answer": "A",
-        "answered": true
+        "answered": false
     },
     {
         "question_num": 2,
@@ -198,7 +198,7 @@
         "text": "Unscramble the word: nosj",
         "category": "Medium",
         "answer": "json",
-        "answered": true
+        "answered": false
     },
     {
         "question_num": 9,
@@ -212,7 +212,7 @@
         "text": "Unscramble the word: ppndea",
         "category": "Medium",
         "answer": "append",
-        "answered": true
+        "answered": false
     },
     {
         "question_num": 2,
