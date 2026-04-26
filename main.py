@@ -77,32 +77,37 @@ def scrolling_credits():
     print("╚╝╩ ╩╚═╝ ╩   ╚═╝╩ ╩╚═╝╚═╝╩╚═╝    ")
 
 def instructions():
-    print("Instructions (enter to continue):\n"
-          "")
+   print("Instructions (press enter to continue):\n"
+         "")
 
-    input(f"Paithon: Welcome {name}! In this game, you can obtain many \n"
-          "characters and weapons, however, you must first earn a currency called \"Primogems\".\n")
 
-    input("Paithon: To earn Primogems, you have to answer quiz bee questions\n"
-          "related to Python coding concepts. There’s 3 difficulties: \n"
-          "Easy (Formative Assessment), Medium (Alternative Assessment), \n"
-          "and lastly, Hard (Summative Assessment).\n ")
+   input(f"Paithon: Welcome {name}! In this game, you can obtain many \n"
+         "characters and weapons, however, you must first earn a currency called \033[95m\"Primogems\"\033[0m.\n")
 
-    print("\nPaithon:")
-    print(" o Easy gives 90 Primogems per question")
-    print(" o Medium gives 140 Primogems per question")
-    print(" o Hard gives 180 Primogems per question")
-    input(" o Each level contains five items!\n ")
 
-    print("Paithon: So, you might be asking, \"What do I do with all these Primogems..?\" \n"
-          "Well, first..!")
-    print("\n o You can convert them into wishes when pulling on the current event wish banner.")
-    print(" o Doing a pull gives you one guaranteed 4-star, that of either a weapon or character.")
-    input(" o The 9 other wishes from one pull are random; usually a 3-star, as higher value items have lower drop rates!.\n ")
+   input("Paithon: To earn Primogems, you have to answer quiz bee questions\n"
+         "related to Python coding concepts. There’s 3 difficulties: \n"
+         "\033[92mEasy (Formative Assessment)\033[0m, \033[93mMedium (Alternative Assessment)\033[0m, \n"
+         "and lastly, \033[91mHard (Summative Assessment)\033[0m.\n ")
 
-    print("When a 5-star is available and a golden star is visible when wishing, \n"
-          "you have a 50/50 chance of obtaining either Xiao (limited character) \n"
-          "or a character from the permanent wish (standard 5-star characters).")
+
+   print("\nPaithon:")
+   print(" o \033[92mEasy\033[0m gives \033[95m\"90 Primogems\"\033[0m per question")
+   print(" o \033[93mMedium\033[0m gives \033[95m\" 140 Primogems\"\033[0m per question")
+   print(" o \033[91mHard\033[0m gives \033[95m\"180 Primogems\"\033[0m per question")
+   input(" o Each level contains \033[4mfive items\033[0m!\n ")
+
+
+   print("Paithon: So, you might be asking, \"What do I do with all these Primogems..?\" \n"
+         "Well, first..!")
+   print("\n o You can \033[4mconvert them into wishes\033[0m when pulling on the current event wish banner.")
+   print(" o Doing a pull gives you one guaranteed 4-star, that of either a weapon or character.")
+   input(" o The 9 other wishes from one pull are random; usually a 3-star, as higher value items have lower drop rates!\n ")
+
+
+   print("When a 5-star is available and a golden star is visible when wishing, \n"
+         "you have a 50/50 chance of obtaining either \033[96mXiao (limited character)\033[0m \n"
+         "or a character from the permanent wish (standard 5-star characters).")
 
 #----------------------------------ASCII ARTS-------------------------------------
 def xiao_ascii():
@@ -247,51 +252,55 @@ def gold_wish():
 main_menu()
 name = ""
 while name == "":
-    name = input("\nPaithon: Welcome to Paithon's Gacha! What is your name, traveler? ").strip()
-    if name == "": print("Please enter a name.")
+   name = input("\nPaithon: Welcome to Paithon's Gacha! What is your name, traveler? ").strip()
+   if name == "": print("Please enter a name.")
+time.sleep(0.25)
 print(f"Paithon: What a lovely name, {name}! ✧｡٩(ˊᗜˋ )و✧*｡")
 
 # ---------------Main Menu loop-----------------
 while True:
-    print("\n\n")
-    print(" .-.---------------------------------.-.")
-    print(" ((o))                                  )")
-    print(" ( )_______          _____         ____/")
-    print("  |             MAIN MENU            |")
-    print("  |                                  |")
-    print("  |  1. Start Game                   |")
-    print("  |                                  |")
-    print("  |  2. Go Stargazing                |")
-    print("  |                                  |")
-    print("  |  3. View Inventory               |")
-    print("  |                                  |")
-    print("  |  4. How to Play                  |")
-    print("  |                                  |")
-    print("  |  5. Credits                      |")
-    print("  |                                  |")
-    print("  |  6. Quit                         |")
-    print("  |                                  |")
-    print("  |____    _______    __  ____    ___|")
-    print(" / )                                  )")
-    print("((o))                                  )")
-    print(" '------------------------------------'")
+   time.sleep(1.5)
+   print("\n\n")
+   print("  .-.---------------------------------.-.")
+   print("  ((o))                                  )")
+   print("  ( )_______          _____         ____/")
+   print("  |             MAIN MENU            |")
+   print("  |                                  |")
+   print("  |  1. Start Game                   |")
+   print("  |                                  |")
+   print("  |  2. Go Stargazing                |")
+   print("  |                                  |")
+   print("  |  3. View Inventory               |")
+   print("  |                                  |")
+   print("  |  4. How to Play                  |")
+   print("  |                                  |")
+   print("  |  5. Credits                      |")
+   print("  |                                  |")
+   print("  |  6. Quit                         |")
+   print("  |                                  |")
+   print("  |____    _______    __  ____    ___|")
+   print("  / )                                  )")
+   print("  ((o))                                  )")
+   print("  '------------------------------------'")
 
-    print("\n\n")
-    while True:
-        try:
-            menuChoice = int(input("\nEnter menu choice (1-6): "))
-            if 1 <= menuChoice <= 6:
-                break
-            else:
-                print("Enter a number between 1 to 6.")
-        except ValueError:
-            print("Invalid input! Try again.")
+   print("\n")
+   while True:
+       try:
+           time.sleep(1)
+           menuChoice = int(input("  Enter menu choice (1-6): "))
+           if 1 <= menuChoice <= 6:
+               break
+           else:
+               print("Enter a number between 1 to 6.")
+       except ValueError:
+           print("Invalid input! Try again.")
 
     # Start Game
-    if menuChoice == 1:
-        print(f"Paithon: Hello {name}! In this game, you must play Python-coding related minigames and answer questions"
-              "\nto obtain a special currency called Primogems in order to wish on the current banner. You need 1,600 "
-              "\nPrimogems to wish. Good luck!")
+   if menuChoice == 1:
+       print(
+           f"\nPaithon: Hello {name}! In this game, you must play Python-coding related minigames and answer questions"
+           "\nto obtain a special currency called \033[95mPrimogems\033[0m in order to wish on the current banner. You need \033[95m1,600\033[0m "
+           "\n\033[95mPrimogems\033[0m to wish. Good luck!")
 
         print("\nChoose a category (or 0 to quit):")
         print("0. Quit")
