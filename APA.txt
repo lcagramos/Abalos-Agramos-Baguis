@@ -5,5 +5,3 @@ https://patorjk.com/software/taag/#p=display&f=
 Graffiti&t=Type+Something+&x=none&v=4&h=4&w=80&we=false
 
 # Emoji combos. (n.d.). https://emojicombos.com/
-
-# Image to ASCII: Free ASCII Art converter. (n.d.). Injosoft AB. https://www.asciiart.eu/image-to-ascii

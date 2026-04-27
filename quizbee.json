@@ -253,7 +253,7 @@
     {
         "question_num": 5,
         "text": [
-            "What will this output?\nprint(arr[1])  # from previous list\n"
+            "What will this output?\nprint(arr[1])  \narr = [1,2,3,4,5,6]"
         ],
         "choices": [
             "A. 2\nB. 4\nC. 6\nD. Error"
